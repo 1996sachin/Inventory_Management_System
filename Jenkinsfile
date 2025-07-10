@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh """
-                rsync -av --delete ./ $DEPLOY_DIR/
+                rsync -av --delete --no-group ./ $DEPLOY_DIR/
                 cd $DEPLOY_DIR
                 php artisan migrate --force
                 php artisan config:cache
